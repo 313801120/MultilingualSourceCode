@@ -1,0 +1,19 @@
+{
+	"manifest_version": 2,
+	"name": "九九乘法表",
+	"description": "使用chrome插件来开发 九九乘法表 由喜欢TA QQ313801120原创制作",
+	"version": "1.0",
+	"browser_action": {
+		"default_title": "九九乘法表",
+		"default_icon": "XiYueTa313801120.png"
+	},
+	"background": {
+		"scripts": ["background.js"]
+	},
+	"content_scripts": [{
+		"matches": [
+			"<all_urls>"
+		],
+		"js": ["content.js"]
+	}]
+}
