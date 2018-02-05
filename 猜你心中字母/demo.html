@@ -1,0 +1,68 @@
+<div id="msg"></div>
+<script>
+//使用JS语言来开发 猜你心中字母 
+showClick("","","","","")
+function showClick(action,nIndex,zm,s1,s2,s3){
+	if(zm==''||zm==undefined)zm='ABCDEFGHIJKLMNOPQRSTU';
+	if(action=='1'){
+		showSelectHtml(zm,2);
+	}else if('|2|3|4|'.indexOf('|'+action+'|')!=-1){
+		nIndex=Math.round(nIndex);
+		if(nIndex==1){
+			sData=s2+s1+s3;
+		}else if(nIndex==2){
+			sData=s1+s2+s3;
+		}else if(nIndex==3){
+			sData=s1+s3+s2;
+		}
+		if(action=='4'){
+			s=sData.substr(10,1)
+			document.getElementById("msg").innerHTML='猜你心中记住的字母是不是 <b><font color=red>'+ s +'</font></b>';
+		}else{
+			showSelectHtml(sData,Math.round(action)+1); 
+		}
+	}else{ 
+		document.getElementById("msg").innerHTML='第1步：请心里记住一个字母：<a href=\'javascript:showClick(1)\'>点击进入下一步</a><div style=\'letter-spacing:10px;font-size:16px\'>' + zm + '</div>'
+	}
+}
+function showSelectHtml(zm,action){
+	var s1="",s2="",s3="";
+    for(i=1; i<=zm.length; i++){ 
+		s=zm.substr(i-1,1)
+        if(i % 3==1){
+            s1=s1 + s;
+        }else if(i % 3==2){
+            s2=s2 + s;
+        }else{
+            s3=s3 + s;
+        }
+    }
+	c='第'+ action +'步：选择你心里那个字母在哪一组<hr>';
+    c+='第一组：' + s1 + ' <a href=\'javascript:showClick('+action+',1,"","'+s1+'","'+s2+'","'+s3+'")\'>在这里</a><hr>';
+    c+='第二组：' + s2 + ' <a href=\'javascript:showClick('+action+',2,"","'+s1+'","'+s2+'","'+s3+'")\'>在这里</a><hr>';
+    c+='第三组：' + s3 + ' <a href=\'javascript:showClick('+action+',3,"","'+s1+'","'+s2+'","'+s3+'")\'>在这里</a><hr>';
+	document.getElementById("msg").innerHTML=c
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
