@@ -1,1 +1,0 @@
- console.log("石头剪刀布游戏 background run"); 

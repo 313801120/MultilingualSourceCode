@@ -1,1 +1,0 @@
-console.log("猜你心中字母 background run"); 
